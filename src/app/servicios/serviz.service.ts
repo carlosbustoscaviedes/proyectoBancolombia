@@ -678,6 +678,42 @@ validarCorreo(){
       return this.usarHttp.post('https://notificaciones-d9fbd-default-rtdb.firebaseio.com/calificacion.json',  DatosCalificar  )
 
     }
+
+
+
+    /*-----------------------CARGAR CALIFICACIONES---------------------*/
+    cargarCalificaciones(correo:any){
+
+      return this.usarHttp.get('https://notificaciones-d9fbd-default-rtdb.firebaseio.com/calificacion.json')
+            .pipe(
+              map( resp=>{
+                
+                 /*--creamos un arreglo nuevo--*/
+                 const GuardarArr:any = []; 
+                  
+                 
+                  Object.values( resp ).forEach( datos => {/*--hacemos un bucle de los datos base de datos--*/
+                    //console.log( datos.id)
+                    let todosLosDatos = datos;/*---traemos todos los datos---*/
+      
+                    let TodosNombres = datos.nombreQuienCalifica;/*---traemos todos los nombre---*/
+                    
+      
+                    if( TodosNombres.indexOf( correo ) >= 0 ){/*---comprobamos si esta el nombre---*/
+      
+                        //console.log(todosLosId)/*---solo trae el id de ese---*/
+                        GuardarArr.push( todosLosDatos )/*---insertarmos solo el id de la cedula---*/
+                    }
+      
+                  })
+                  
+                  return GuardarArr/*---retornamos----*/
+             
+              })
+      
+            )
+
+    }
     
 
 }

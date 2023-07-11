@@ -160,6 +160,8 @@ export class PantallaColaboradorComponent implements OnInit{
 
   rechazar( valor:any ){
     
+    console.log(this)
+
     Swal.fire(
       '!Que lastima!',
       '!La solicitud ha sido Rechazada!',
@@ -185,11 +187,13 @@ export class PantallaColaboradorComponent implements OnInit{
     }
 
     console.log(rechazado);
-
+  
+    /*-
     this.conectarServicios.registrarNotificaciones(rechazado)
           .subscribe( resp => {
             console.log(resp)
           })
+          --*/
        
 
   }
