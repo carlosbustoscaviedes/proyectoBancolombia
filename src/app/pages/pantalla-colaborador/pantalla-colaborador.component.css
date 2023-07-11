@@ -46,6 +46,7 @@
   background-color: #0090ff;
   font-size: 17px;
   cursor: pointer;
+  margin-left: 10px;
 }
 .pantalla_de_calificacion .base_calificacion p {
   font-family: "Open Sans", sans-serif;

@@ -37,4 +37,31 @@
 .contenedor_login .base .formulario .base_boton {
   display: block;
   float: right;
+}
+
+@media (max-width: 650px) {
+  .contenedor_login .base {
+    width: 100%;
+    margin: auto;
+    display: table;
+    padding: 0px 20px;
+  }
+  .contenedor_login .base .formulario {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+  .contenedor_login .base .formulario .base1 {
+    width: 100%;
+    float: inherit;
+    margin-left: 0px;
+  }
+  .contenedor_login .base .formulario .base1 .base_tarifa .sub_base {
+    width: 100%;
+    float: inherit;
+    margin-left: 0;
+  }
+  .contenedor_login .base h1 {
+    margin-top: 40px;
+  }
 }/*# sourceMappingURL=registro-colaborador.component.css.map */

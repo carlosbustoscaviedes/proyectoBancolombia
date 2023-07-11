@@ -201,6 +201,19 @@
   color: red;
   font-size: 15px;
 }
+.base_mensajes .boton_cerrar {
+  padding: 6px 20px;
+  background-color: #0090ff;
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  top: 0px;
+  left: 23px;
+  cursor: pointer;
+  width: 29%;
+  display: block;
+  text-align: center;
+}
 
 .base_colaborador {
   width: 100%;
@@ -251,6 +264,18 @@
 }
 .base_colaborador .seccion_base .morado {
   background-color: #2E0063;
+}
+.base_colaborador .boton_cerrar {
+  background-color: #0090ff;
+  color: #ffffff;
+  border: 1px solid #0090ff;
+  margin-top: 13px;
+  display: block;
+  width: 38%;
+  margin: 20px;
+  font-size: 19px;
+  padding: 5px 0px;
+  text-align: center;
 }
 
 .base_calificar {
@@ -308,6 +333,7 @@
   background-color: #0090ff;
   font-size: 17px;
   cursor: pointer;
+  margin: 0px 10px;
 }
 
 @media (max-width: 650px) {
@@ -334,9 +360,11 @@
   }
   .contenedor_menu .contenedor_botones .base_trabajos {
     float: inherit;
+    height: 44px;
   }
   .contenedor_menu .contenedor_botones .base_trabajos .circulo {
-    top: 21px;
+    top: 14px;
+    margin-bottom: 5px;
   }
   .contenedor_menu .contenedor_botones .base_notificaciones {
     float: inherit;
@@ -369,5 +397,35 @@
   .contenedor_menu .contenedor_botones .base_pantallas_log {
     width: 100%;
     top: 0px;
+  }
+  .base_colaborador {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    border-bottom: 1px solid rgb(0, 144, 255);
+  }
+  .base_colaborador .seccion_base a {
+    padding: 7px 20px;
+    width: 100%;
+    margin: 0px auto 10px auto;
+    position: relative;
+    top: 0;
+    float: left;
+    right: 0;
+  }
+  .base_colaborador .seccion_base {
+    padding: 0px 31px;
+  }
+  .base_mensajes .boton_cerrar {
+    width: 43%;
+  }
+  .base_mensajes p {
+    font-size: 16px;
+  }
+  .contenedor_menu .contenedor_botones .base_pantallas_log .text {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 13px 10px;
   }
 }/*# sourceMappingURL=navbar.component.css.map */

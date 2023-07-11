@@ -222,6 +222,7 @@
   border-radius: 10px;
   font-size: 18px;
   display: inherit;
+  margin-bottom: 30px;
 }
 .contenedor_colaborador .base_colaborador .contenedor_servicios form .agendar:hover {
   background-color: #7e6896;
