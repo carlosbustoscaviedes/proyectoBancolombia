@@ -1,0 +1,33 @@
+<section>
+    <div class="contenedor_login">
+        <div class="base">
+            <h1>Resgistro Clientes</h1>
+            <form [formGroup]="registroCliente" class="formulario">
+
+                <label>Nombre Completo</label>
+                <input type="text" class="correo" formControlName="nombre"/>
+                <small *ngIf="validarNombre">Escriba minimo 10 caracteres</small>
+
+                <label>Numero de Celular</label>
+                <input type="number" class="correo" formControlName="telefono" />
+                <small *ngIf="validarTelefono">El numero debe tener almenos 10 caracteres</small>
+
+
+                <label>Correo Electronico</label>
+                <input type="email" class="correo" formControlName="correo"/>
+                <small *ngIf="validarCorreo">El correo debe tener minimo 13 caracteres</small>
+
+                <label>Contraseña</label>
+                <input type="password" class="pass" formControlName="pass"/>
+                <small *ngIf="validarPass">Escriba la contraseña</small>
+
+                <label>repetir Contraseña</label>
+                <input type="password" class="pass" formControlName="pass2"/>
+                <small *ngIf="validarPass2">La contraseña no coincide</small>
+
+                <button (click)="enviarRegistroCliente()">Ingresar</button>
+
+            </form>
+        </div>
+    </div>
+</section>

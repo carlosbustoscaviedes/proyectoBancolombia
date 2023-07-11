@@ -1,0 +1,87 @@
+<section>
+    <div class="contenedor_colaborador">
+        <div class="base_colaborador">
+            <form class="formulario">
+                <label>Seleccione otra categoria de servicios que desea</label>
+                <div>
+                    <select #valor (change)="cambiar( valor.value )">
+                        <option *ngFor="let tipo of tipoDeServicios" [value]="tipo.valor">{{ tipo.servicio }}</option>
+                    </select>
+                </div>
+            </form>
+
+            <article>
+                <h1>{{ tipoServicio }}</h1>
+                <h2>¡Estos son nuestros colaboradores Disponibles!</h2>
+                <p>Seleccione el colaborador que mas te convenga, y contrata con el los servicios que necesitas.</p>
+            </article>
+            
+            <!--mensaje de no colaboradores-->
+            <div class="mensaje_no_colaboradores" *ngIf="mensajeNoColaboradores">
+                <p>En este momento no tenemos colaboradores disponibles, por favor elige otra opcion</p>
+            </div>
+
+
+            <div class="contenedor_colaboradores">
+
+                <div class="tarjeta_colaborador" *ngFor="let busqueda of busquedaColaboradores; let i = index">
+                    <div class="detalle">
+                        <img src="./assets/img/foto_perfil.png" />
+                        <p class="nombre">{{ busqueda.nombre }}</p>
+                    </div>
+
+                    <div class="botones">
+                        <p>Ver Perfil</p>
+                        <p class="morado" (click)="verServicios( i )">Ver servicios</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="divisor"/>
+
+            <div class="detalle_colaborador">
+                <h2 class="nombre">{{ nombrePersona }}</h2>
+                <input type="hidden" [(ngModel)]="email" [value]="correo">{{ email }}
+
+                <p class="ubicacion">Domicilios solo para la ciudad de {{ domicilios }}</p>
+            </div>
+
+            <div class="contenedor_servicios">
+                <form [formGroup]="contratarServicio">
+                    <p>Servicios que presta: <span>Valor x hora</span></p>
+                    <div class="info">
+                        <input type="checkbox" [name]="servicio1" [value]="tarifa1"  formControlName="tarifa1" #t1 (click)="check1(t1.name, t1.value)"/> <span class="texto_check">{{ servicio1 }}<span class="mover_derecha">{{  tarifa1 }}</span></span>
+                    </div>  
+                    <div class="info">
+                        <input type="checkbox" [name]="servicio2" [value]="tarifa2" formControlName="tarifa2" #t2  (click)="check2(t2.name, t2.value)"/> 
+                        <span class="texto_check">{{ servicio2 }} <span class="mover_derecha">{{  tarifa2 }}</span></span>
+                    </div>
+                    <div class="info">
+                        <input type="checkbox" [name]="servicio3" [value]="tarifa3" formControlName="tarifa3" #t3  (click)="check3(t3.name, t3.value)"/> 
+                        <span class="texto_check">{{ servicio3 }} <span class="mover_derecha">{{  tarifa3 }}</span></span>
+                    </div>
+                    <div class="info">
+                        <input type="checkbox" [name]="servicio4" [value]="tarifa4" formControlName="tarifa4" #t4  (click)="check4(t4.name, t4.value)"/> 
+                        <span class="texto_check">{{ servicio4 }} <span class="mover_derecha">{{  tarifa4 }}</span></span>
+                    </div>
+
+                    <p class="total">Total <span>{{  valorTotal }}</span></p>
+                    
+                    <p class="lugar">¿Donde Requiere el servicio?</p>
+                    <label>Escriba la direccion donde necesita el servicio</label>
+                    <input type="text" class="input" id="dir" formControlName="direccion" [(ngModel)]="direccion"/>
+
+                    <p class="lugar">¿Cuando necesitas el servicio?</p>
+                    <label>Fecha</label>
+                    <input type="date" class="input" formControlName="fecha" [(ngModel)]="fecha"/>
+
+                    <label>Hora</label>
+                    <input type="time" class="input" formControlName="hora"  [(ngModel)]="hora"/>
+
+                    <button class="agendar" (click)="agendarServicio()" >Agendar servicio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

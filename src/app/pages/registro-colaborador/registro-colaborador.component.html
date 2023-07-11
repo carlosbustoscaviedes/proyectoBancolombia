@@ -1,0 +1,110 @@
+<section>
+    <div class="contenedor_login">
+        <div class="base">
+            <h1>Registro Colaboradores</h1>
+            <p>¡Hola! Bienvenido a SERVIZ es un gusto tenerte con nosotros, si eres una persona que busca ofrecer su talento a servicio de los demas estas en el lugar correcto. para empezar debes dejar tu registro con esa información te podrán contactar, asimismo podras ingresar y ver en tu perfil las personas que te han contratado. </p>
+
+            <form [formGroup]="registroColaborador" class="formulario">
+                <div class="base1">
+                    <label>Nombre Completo</label>
+                    <input type="text" class="correo" formControlName="nombre"/>
+                    <small *ngIf="validarNombre">El nombre debe tener almenos 10 caracteres</small>
+
+
+                    <label>Correo Electronico</label>
+                    <input type="text" class="correo" formControlName="correo"/>
+                    <small *ngIf="validarCorreo">El correo debe tener almenos 13 caracteres</small>
+
+
+                    <label>Ciudad donde realiza la labor</label>
+                    <select formControlName="ciudad">
+                        <option [value]="ciudad.municipio" *ngFor="let ciudad of ciudadesColombia">{{ ciudad.municipio }}</option>
+                    </select>
+                    <small *ngIf="validarCiudad">El campo es obligatorio</small>
+
+
+                    <label>Contraseña</label>
+                    <input type="text" class="pass" formControlName="pass"/>
+                    <small *ngIf="validarPass">El campo es obligatorio</small>
+
+
+                    <label>repetir Contraseña</label>
+                    <input type="text" class="pass" formControlName="pass2"/>
+                    <small *ngIf="validarPass2">La contraseña no es igual</small>
+                </div>
+
+                <div class="base1">
+                    <label>Seleccione especialidad</label>
+                    <select formControlName="Tiposervicio">
+                        <option [value]="servicio.valor" *ngFor="let servicio of tipoDeServicios">{{ servicio.servicio }}</option>
+                    </select>
+                    <small *ngIf="validarTiposervicio">Seleccione especialidad</small>
+
+
+                    <div class="base_tarifa">
+                        <div class="sub_base">
+                            <label>Escriba servicio 1</label>
+                            <input type="text" class="pass" formControlName="servicio1"/>
+                            <small *ngIf="validarServicio1">El servicio debe tener minimo 6 caracteres</small>
+                        </div>
+
+                        <div class="sub_base">
+                            <label>Tarifa x hora</label>
+                            <input type="number" class="pass" formControlName="tarifa1"/>
+                            <small *ngIf="Tarifa1">El servicio debe tener minimo 4 caracteres</small>
+                        </div>
+                    </div>
+
+                    <div class="base_tarifa">
+                        <div class="sub_base">
+                            <label>Escriba servicio 2</label>
+                            <input type="text" class="pass" formControlName="servicio2"/>
+                            <small *ngIf="validarServicio2">El servicio debe tener minimo 6 caracteres</small>
+                        </div>
+
+                        <div class="sub_base">
+                            <label>Tarifa x hora</label>
+                            <input type="number" class="pass" formControlName="tarifa2"/>
+                            <small *ngIf="Tarifa2">El servicio debe tener minimo 4 caracteres</small>
+                        </div>
+                    </div>
+
+                    <div class="base_tarifa">
+                        <div class="sub_base">
+                            <label>Escriba servicio 3</label>
+                            <input type="text" class="pass" formControlName="servicio3"/>
+                            <small *ngIf="validarServicio3">El servicio debe tener minimo 6 caracteres</small>
+                        </div>
+
+                        <div class="sub_base">
+                            <label>Tarifa x hora</label>
+                            <input type="number" class="pass" formControlName="tarifa3"/>
+                            <small *ngIf="Tarifa3">El servicio debe tener minimo 4 caracteres</small>
+                        </div>
+                    </div>
+
+                    <div class="base_tarifa">
+                        <div class="sub_base">
+                            <label>Escriba servicio 4</label>
+                            <input type="text" class="pass" formControlName="servicio4"/>
+                            <small *ngIf="validarServicio4">El servicio debe tener minimo 6 caracteres</small>
+                        </div>
+
+                        <div class="sub_base">
+                            <label>Tarifa x hora</label>
+                            <input type="number" class="pass" formControlName="tarifa4"/>
+                            <small *ngIf="Tarifa4">El servicio debe tener minimo 4 caracteres</small>
+                        </div>
+                    </div>
+
+
+                    <div class="base_boton">
+                        <button (click)="registrarColaborador()">Registrar</button>
+                    </div>
+                </div>
+              
+            </form>
+            
+        </div>
+    </div>
+</section>

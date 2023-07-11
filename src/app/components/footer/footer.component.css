@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+  height: 59px;
+  background-color: #0090FF;
+}
+.footer p {
+  text-align: center;
+  color: #fff;
+  padding-top: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}/*# sourceMappingURL=footer.component.css.map */

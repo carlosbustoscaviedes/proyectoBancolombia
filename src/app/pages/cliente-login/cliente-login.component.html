@@ -1,0 +1,20 @@
+<section>
+    <div class="contenedor_login">
+        <div class="base">
+            <h1>Acceso a Clientes</h1>
+
+            <form [formGroup]="loginCliente" class="formulario">
+
+                <label>Correo Electronico</label>
+                <input type="text" class="correo" formControlName="correo"/>
+                <small *ngIf="validarCorreo">Escriba la contraseña</small>
+
+                <label>Contraseña</label>
+                <input type="text" class="pass" formControlName="pass"/>
+                <small *ngIf="validarPass">Escriba el password</small>
+
+                <button (click)="ingresarLogin()">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</section>

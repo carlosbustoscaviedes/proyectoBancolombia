@@ -1,0 +1,85 @@
+<header>
+    <div class="contenedor_menu">
+        <img src="./assets/img/logo_empresa.svg" class="logo"/>
+
+        <div class="base_botones_menu">
+            <p routerLink="/inicio" *ngIf="menuInicio">Inicio</p>
+            <p routerLink="/home">Home</p>
+        </div>
+
+        <div class="contenedor_botones">
+
+            <div class="base_trabajos" *ngIf="baseTrabajos">
+                <div class="circulo" *ngIf="circuloTerminados"></div>
+                <p class="text" (click)="contratados()">Servicios Terminados</p>
+            </div>
+            <div class="base_notificaciones" *ngIf="baseNotificacions">
+                <div class="circulo" *ngIf="circuloNotificar"></div>
+                <p class="notificaciones" (click)="notificaciones()">Notificaciones</p>
+            </div>
+
+            <p class="login" (click)="preder2()" *ngIf="textregistro">Login</p>
+            <p class="login" (click)="preder1()" *ngIf="textregistro">Registrarse / </p>
+
+            <!---registro---->
+            <div class="base_pantallas_log" *ngIf="registro">
+                <p class="text" routerLink="/clienteRegistro" (click)="cerrarR()">Cliente</p>
+                <hr>
+                <p class="text" routerLink="/registroColaborador" (click)="cerrarR()">Colaborador</p>
+            </div>
+
+            <!---login---->
+            <div class="base_pantallas_log morado" *ngIf="login">
+                <p class="text blanco" routerLink="/clienteLogin" (click)="cerrarL()">Cliente</p>
+                <hr>
+                <p class="text blanco" routerLink="/loginColaborador" (click)="cerrarL()">Colaborador</p>
+            </div>
+
+            <div class="base_usuario" *ngIf="baseUsuario">
+                <img src="./assets/img/foto_perfil.png"/>
+                <p>{{ nombreLogueado }} - <span (click)="cerrarSesion()">cerrar sesion</span></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="base_mensajes" *ngIf="baseMensajes">
+        <!--cliente-->
+        <p *ngFor="let notificar of mensajeDeColaborador">{{ notificar.mensaje }} <br><span >{{ notificar.sugerencia  }}</span></p>
+
+        <!--colaborador-->
+        <p *ngFor="let notificarColaborador of mensajeDeColaboradorCliente">{{notificarColaborador.nombrePagador}} esta satisfecho con su labor y ha realizado el pago en su cuenta numero 900-34-56 </p>
+        
+        <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>
+    </div>
+
+    <div class="base_colaborador" *ngIf="baseColaborador" >
+        <div class="seccion_base" *ngFor="let contratado of mensajeServicioTerminado; let i = index">
+            <img src="./assets/img/foto_perfil.png"/>
+            <p>{{ contratado.nombreQuienMandaNotificacion }}</p>
+            <a class="boton_calificar morado" (click)="calificar(i)">Calificar</a>
+            <a class="boton_pagar" (click)="pagar(i)">Pagar</a>
+
+        </div>
+        <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>
+    </div>
+
+    <div class="base_calificar" *ngIf="baseCalificar">
+       
+            <h1>{{ nombreCalificado }}</h1>
+
+            <input type="radio" name="malo"  value="malo" #val1 (click)="radioBotton(val1.value)"><span>Malo</span><br>
+            <input type="radio" name="malo"  value="bueno" #val2 (click)="radioBotton(val2.value)" selected><span>Bueno</span><br>
+            <input type="radio" name="malo"  value="excelente" #val3 (click)="radioBotton(val3.value)"><span>Excelente</span><br>
+
+            <p>Enviale un comentario y si queres verlo pueder consultar su perfil</p>
+        
+            <textarea type="text" class="textarea" rows="4" cols="50" name="mensaje"  [(ngModel)]="mensajeTXT"></textarea>
+
+            <button (click)="enviarCalificacion()">Enviar Calificación</button>
+            <button (click)="cerrar()">cerrar</button>
+
+        
+
+    </div>
+</header>

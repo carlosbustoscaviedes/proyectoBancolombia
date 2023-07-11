@@ -1,0 +1,86 @@
+<section>
+
+    <div class="pantalla_de_calificacion" *ngIf="pantallaCalificacion">
+        <div class="base_calificacion">
+            <form>
+                <h1>{{ nombreDelCalificado }}</h1>
+    
+                <input type="radio" name="malo"  value="malo" #val1 (click)="radioBotton(val1.value)"><span>Malo</span><br>
+                <input type="radio" name="malo"  value="bueno" #val2 (click)="radioBotton(val2.value)" selected><span>Bueno</span><br>
+                <input type="radio" name="malo"  value="excelente" #val3 (click)="radioBotton(val3.value)"><span>Excelente</span><br>
+    
+                <p>Enviale un comentario y si queres verlo pueder consultar su perfil</p>
+            
+                <textarea type="text" class="textarea" rows="4" cols="50" name="mensaje"  [(ngModel)]="mensajeTXT"></textarea>
+    
+                <button (click)="enviarCalificacion()">Enviar Calificación</button>
+                <button (click)="cerrar()">Cerrar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="pantalla_colaborador">
+        <h1>{{ nombrePerfil }}</h1>
+        <h2>Estas son tus notificaciones de trabajo</h2>
+        <p>Revisa y acepta las que mas te convengan</p>
+        <hr>
+        <div class="contendor_solicitudes">
+            
+            <div class="fila_solicitud" *ngFor="let perfil of resultadosTrabajo; let i =  index">
+                <div>
+                    <img src="./assets/img/foto_perfil.png"/>
+                </div>
+                <div class="base_detalle">
+                    <h2>{{ perfil.nombreCliente }}</h2>
+                    <div class="base_info_w">
+                        <button (click)="calificarCliente(i)">Calificar</button>
+                        <button (click)="verDetalle( i )">Ver agendamiento</button>
+                        <button class="verde" (click)="aceptar( i )"  [id]="i">Aceptar</button>
+                        <button class="rojo"   (click)="rechazar( i )" [id]="i">Rechazar</button>
+                        <button class="naranja"  (click)="terminado( i )">trabajo Terminado</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--ver agendamiento-->
+            <div class="base_agendamiento" *ngIf="infoDetalle" (click)="esconder()">
+                <h1>solicitado por: {{ this.nombreCliente }}</h1>
+                <div class="base">
+                    <div class="seccion1 azul">
+                        <p>Correo Cliente</p>
+                        <p>dirección del servicio</p>
+                        <p>Fecha del servicio</p>
+                        <p>Hora del servicio</p>
+                        <p>Nombre del Cliente</p>
+                        <p>servicio 1</p>
+                        <p>servicio 2</p>
+                        <p>servicio 3</p>
+                        <p>servicio 4</p>
+                        <p>Tarifa servicio1</p>
+                        <p>Tarifa servicio2</p>
+                        <p>Tarifa servicio3</p>
+                        <p>Tarifa servicio4</p>
+
+                    </div>
+                    <div class="seccion2 borde">
+                        <p class="detalle">{{ correoSolictante }}</p>
+                        <p class="detalle">{{ direccion }}</p>
+                        <p class="detalle">{{ fecha }}</p>
+                        <p class="detalle">{{ hora }}</p>
+                        <p class="detalle">{{ nombreCliente }}</p>
+                        <p class="detalle">{{ servicio1 }}</p>
+                        <p class="detalle">{{ servicio2 }}</p>
+                        <p class="detalle">{{ servicio3 }}</p>
+                        <p class="detalle">{{ servicio4  }}</p>
+                        <p class="detalle">{{ tarifa1  }}</p>
+                        <p class="detalle">{{ tarifa2  }}</p>
+                        <p class="detalle">{{ tarifa3  }}</p>
+                        <p class="detalle">{{ tarifa4  }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

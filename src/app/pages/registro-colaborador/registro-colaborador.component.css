@@ -1,0 +1,40 @@
+.contenedor_login .base {
+  width: 1200px;
+  margin: auto;
+  display: table;
+}
+.contenedor_login .base p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 17px;
+  max-width: 1074px;
+  width: 100%;
+  margin: 39px auto 9px auto;
+  line-height: 26px;
+  padding: 19px 29px;
+  background-color: #2E0063;
+  border-radius: 11px;
+}
+.contenedor_login .base .formulario {
+  width: 100%;
+  max-width: 100%;
+}
+.contenedor_login .base .formulario .base1 {
+  width: 46%;
+  float: left;
+  margin-left: 30px;
+}
+.contenedor_login .base .formulario .base1 .base_tarifa {
+  width: 100%;
+  display: table;
+}
+.contenedor_login .base .formulario .base1 .base_tarifa .sub_base {
+  width: 48%;
+  float: left;
+  margin-left: 10px;
+}
+.contenedor_login .base .formulario .base_boton {
+  display: block;
+  float: right;
+}/*# sourceMappingURL=registro-colaborador.component.css.map */

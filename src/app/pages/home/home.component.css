@@ -1,0 +1,84 @@
+.contenedor_inicio {
+  width: 100%;
+  display: table;
+  text-align: center;
+}
+.contenedor_inicio img {
+  width: 100%;
+}
+.contenedor_inicio h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #0090ff;
+  font-size: 30px;
+  text-align: center;
+  margin: auto;
+  padding-top: 44px;
+}
+.contenedor_inicio .instruccion {
+  width: 70%;
+  max-width: 800px;
+  margin: 40px auto 50px auto;
+}
+.contenedor_inicio h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #0090ff;
+  font-size: 36px;
+  text-align: center;
+  margin: 0px auto 40px auto;
+  padding-top: 44px;
+}
+.contenedor_inicio .contenedor_servicios {
+  width: 100%;
+  max-width: 1200px;
+  display: table;
+  margin: 0px auto 40px auto;
+}
+.contenedor_inicio .contenedor_servicios .tarjetas {
+  width: 100%;
+  max-width: 200px;
+  float: left;
+  height: 260px;
+  position: relative;
+  margin-left: 36px;
+  margin-bottom: 30px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.contenedor_inicio .contenedor_servicios .tarjetas:hover {
+  transform: scale(0.9);
+}
+.contenedor_inicio .contenedor_servicios .tarjetas img {
+  width: 100%;
+}
+.contenedor_inicio .contenedor_servicios .tarjetas p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 20px;
+  color: #0090ff;
+}
+.contenedor_inicio .contenedor_servicios .tarjetas .una_linea {
+  padding-top: 9px;
+}
+
+@media (max-width: 650px) {
+  .contenedor_inicio h2 {
+    font-size: 28px;
+    padding: 0px 40px;
+    text-align: center;
+    margin: 0px auto 40px auto;
+    padding-top: 0;
+  }
+  .contenedor_inicio .contenedor_servicios .tarjetas {
+    width: 100%;
+    max-width: 240px;
+    float: inherit;
+    height: auto;
+    margin: 0px auto 50px auto;
+    position: relative;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=home.component.css.map */

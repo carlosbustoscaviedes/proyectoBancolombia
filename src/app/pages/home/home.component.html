@@ -1,0 +1,19 @@
+<section>
+    <div class="contenedor_inicio">
+        <img src="assets/img/imagen_home.png" />
+
+        <h1>Sigue los pasos , es muy facil</h1>
+        <img src="assets/img/instruccion.svg" class="instruccion"/>
+
+        <h2>Elige el servicio que deseas contratar</h2>
+
+        <div class="contenedor_servicios">
+
+            <div class="tarjetas" *ngFor="let servicios of serviciosAseo; let indice = index" (click)="agendarServicio( servicios.valor )">
+                <img [src]="servicios.img" />
+                <p class="una_linea">{{ servicios.servicio }}</p>
+            </div>
+            
+        </div>
+    </div>
+</section>

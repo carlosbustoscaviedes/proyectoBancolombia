@@ -1,0 +1,373 @@
+.base_botones_menu {
+  width: 400px;
+  display: table;
+  float: left;
+  margin-left: 40px;
+}
+.base_botones_menu p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 19px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+  float: left;
+  margin-left: 20px;
+  padding-top: 15px;
+}
+.base_botones_menu p:hover {
+  text-decoration: underline;
+}
+
+.contenedor_menu {
+  width: 100%;
+  display: table;
+  background-color: #0090FF;
+  padding: 10px 20px 10px 42px;
+}
+.contenedor_menu img {
+  width: 148px;
+  float: left;
+  cursor: pointer;
+}
+.contenedor_menu .contenedor_botones {
+  width: auto;
+  display: table;
+  float: right;
+}
+.contenedor_menu .contenedor_botones .base_trabajos {
+  width: auto;
+  height: 60px;
+  float: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.contenedor_menu .contenedor_botones .base_trabajos .circulo {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 100%;
+  position: absolute;
+  right: 2px;
+  top: 6px;
+}
+.contenedor_menu .contenedor_botones .base_trabajos p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 19px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+.contenedor_menu .contenedor_botones .base_trabajos p:hover {
+  text-decoration: underline;
+}
+.contenedor_menu .contenedor_botones .base_notificaciones {
+  width: 150px;
+  height: 60px;
+  margin-left: 20px;
+  float: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.contenedor_menu .contenedor_botones .base_notificaciones .circulo {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 100%;
+  position: absolute;
+  right: 2px;
+  top: 6px;
+}
+.contenedor_menu .contenedor_botones .base_notificaciones p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 19px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+.contenedor_menu .contenedor_botones .base_notificaciones p:hover {
+  text-decoration: underline;
+}
+.contenedor_menu .contenedor_botones .login {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  margin: auto;
+  padding-top: 19px;
+  float: right;
+  text-transform: uppercase;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log {
+  width: 244px;
+  display: table;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  top: 58px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 144, 255, 0.5215686275);
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log hr {
+  border: 0px;
+  width: 100%;
+  height: 1px;
+  background-color: #0090ff;
+  margin: 4px 0px 5px 0px;
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log .text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #0090ff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log .text:hover {
+  color: #2E0063;
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log .blanco {
+  color: #fff;
+}
+.contenedor_menu .contenedor_botones .base_pantallas_log .blanco:hover {
+  color: #c799fe;
+}
+.contenedor_menu .contenedor_botones .morado {
+  background-color: #2E0063;
+}
+.contenedor_menu .contenedor_botones .base_usuario {
+  width: 441px;
+  display: table;
+  float: right;
+}
+.contenedor_menu .contenedor_botones .base_usuario img {
+  width: 60px;
+  float: left;
+}
+.contenedor_menu .contenedor_botones .base_usuario p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  margin: auto;
+  padding-top: 18px;
+  float: left;
+  text-transform: uppercase;
+}
+.contenedor_menu .contenedor_botones .base_usuario p span {
+  font-size: 14px;
+  padding: 11px;
+  /* background-color: #2E0063; */
+  cursor: pointer;
+  text-decoration: underline;
+}
+.contenedor_menu .contenedor_botones .base_usuario p span:hover {
+  color: #2E0063;
+}
+
+.base_mensajes {
+  width: 800px;
+  display: table;
+  background-color: white;
+  right: 0;
+  padding: 20px;
+  border: 1px solid rgba(0, 144, 255, 0.4392156863);
+  border-top: none;
+  border-right: none;
+  position: absolute;
+}
+.base_mensajes p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #0090FF;
+  font-size: 19px;
+  text-align: left;
+  margin: auto;
+  cursor: pointer;
+  border-top: 1px solid #8ccdff;
+  padding: 13px 28px;
+}
+.base_mensajes p span {
+  color: red;
+  font-size: 15px;
+}
+
+.base_colaborador {
+  width: 100%;
+  max-width: 587px;
+  display: table;
+  background-color: white;
+  position: absolute;
+  right: 300px;
+  border-top: 0px;
+  border-left: 1px solid rgba(0, 144, 255, 0.5098039216);
+  border-right: 1px solid rgba(0, 144, 255, 0.5098039216);
+}
+.base_colaborador .seccion_base {
+  width: 100%;
+  display: table;
+  border-bottom: 1px solid rgba(0, 144, 255, 0.5098039216);
+}
+.base_colaborador .seccion_base img {
+  width: 59px;
+  float: left;
+  margin: 4px 9px 6px 10px;
+}
+.base_colaborador .seccion_base p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #0090ff;
+  font-size: 15px;
+  text-align: center;
+  margin: auto;
+  padding-top: 27px;
+  float: left;
+  text-transform: uppercase;
+}
+.base_colaborador .seccion_base a {
+  padding: 4px 20px;
+  position: relative;
+  top: 21px;
+  background-color: green;
+  margin-left: 13px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  float: right;
+  right: 30px;
+}
+.base_colaborador .seccion_base .morado {
+  background-color: #2E0063;
+}
+
+.base_calificar {
+  width: 100%;
+  max-width: 587px;
+  display: table;
+  background-color: white;
+  position: absolute;
+  right: 300px;
+  border-top: 0px;
+  border-left: 1px solid rgba(0, 144, 255, 0.5098039216);
+  border-right: 1px solid rgba(0, 144, 255, 0.5098039216);
+  border-bottom: 1px solid rgba(0, 144, 255, 0.5098039216);
+  padding: 20px 20px;
+}
+.base_calificar h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #0090ff;
+  font-size: 31px;
+  margin-top: -8px;
+}
+.base_calificar span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 38px;
+  padding-left: 10px;
+}
+.base_calificar p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: -2px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+.base_calificar .textarea {
+  width: 100%;
+  font-size: 18px;
+  padding: 7px 20px;
+  margin: 12px 0px 20px 0px;
+  border: 1px solid #0090ff;
+  border-radius: 5px;
+  color: #0064b1;
+}
+.base_calificar button {
+  padding: 9px 11px;
+  border: none;
+  color: #fff;
+  background-color: #0090ff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .base_botones_menu {
+    width: 100%;
+    display: table;
+    float: left;
+    margin-left: 0px;
+  }
+  .base_botones_menu p {
+    margin-left: 36%;
+  }
+  .contenedor_menu {
+    text-align: center;
+    float: inherit;
+  }
+  .contenedor_menu img {
+    float: inherit;
+  }
+  .contenedor_menu .contenedor_botones {
+    display: table;
+    float: inherit;
+    margin: 0px auto 10px auto;
+  }
+  .contenedor_menu .contenedor_botones .base_trabajos {
+    float: inherit;
+  }
+  .contenedor_menu .contenedor_botones .base_trabajos .circulo {
+    top: 21px;
+  }
+  .contenedor_menu .contenedor_botones .base_notificaciones {
+    float: inherit;
+    display: table;
+    margin: auto;
+    width: 100%;
+    height: 0px;
+  }
+  .contenedor_menu .contenedor_botones .base_usuario {
+    width: 100%;
+  }
+  .contenedor_menu .contenedor_botones .base_usuario img {
+    width: 60px;
+    float: initial;
+    margin-top: 25px;
+  }
+  .contenedor_menu .contenedor_botones .base_usuario p {
+    text-align: center;
+    margin: auto;
+    float: inherit;
+    margin-bottom: 20px;
+    padding-top: 0px;
+    width: 100%;
+  }
+  .contenedor_menu .contenedor_botones .morado {
+    background-color: #2E0063;
+    top: 0;
+    width: 100%;
+  }
+  .contenedor_menu .contenedor_botones .base_pantallas_log {
+    width: 100%;
+    top: 0px;
+  }
+}/*# sourceMappingURL=navbar.component.css.map */

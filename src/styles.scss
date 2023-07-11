@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+
+.contenedor_login{
+
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+
+    .base{
+        width: 700px;
+        margin:auto;
+        display: table;
+
+        h1{
+               text-align: center;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 700;
+                color: #0090ff;
+                font-size: 26px;
+                padding: 9px 0px;
+                text-align: center;
+                margin-bottom: -13px;
+                text-transform: uppercase;
+        }
+        
+        .formulario{
+            width: 100%;
+            max-width: 500px;
+            display: table;
+            margin: auto;
+            padding: 41px;
+            border-radius: 9px;
+    
+            label {
+                display: block;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 200;
+                color: #1b1b1b;
+                font-size: 17px;
+                margin-bottom: 5px;
+                margin-top: 16px;
+            }
+    
+            .correo, .pass, select{
+                width: 100%;
+                font-size: 18px;
+                padding: 7px 20px;
+                margin: 1px 0px 0px 0px;
+                border: 1px solid #0090ff;
+                border-radius: 5px;
+                color: #0064b1;
+            }
+
+            small {
+                color: red;
+                font-size: 13px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 500;
+                margin: 3px 0px 0px 0px;
+                display: block;
+            }
+            
+    
+            button{
+                font-weight: 500;
+                color: #ffffff;
+                font-size: 17px;
+                padding: 10px 23px;
+                background-color: #0090ff;
+                border: none;
+                border-radius: 9px;
+                margin-top: 10px;
+                cursor:pointer;
+
+                &:hover{
+
+                    background-color: #2E0063;
+                }
+            }
+        }
+    }
+   
+}
+
+
+@media(max-width:650px){
+
+    .contenedor_login {
+        width: 100%;
+        height: auto;
+        display: table;
+        align-items: center;
+    }
+
+    .contenedor_login .base {
+        width: 100%;
+        margin: 40px auto;
+        display: table;
+    }
+
+    .contenedor_login .base .formulario {
+        width: 100%;
+        max-width: 500px;
+        display: table;
+        margin: auto;
+        padding: 10px 41px;
+    }
+
+    .contenedor_login .base h1 {
+    
+        font-size: 20px;
+        line-height: 20px;
+        padding: 9px 20px;
+    }
+
+    .contenedor_login .base .formulario button{
+
+        width: 100%;
+    }
+
+    .base_mensajes {
+        width: 100% !important;
+        top: 0;
+    }
+
+
+}
+
