@@ -696,7 +696,7 @@ validarCorreo(){
                     //console.log( datos.id)
                     let todosLosDatos = datos;/*---traemos todos los datos---*/
       
-                    let TodosNombres = datos.emailCalificado;/*---traemos todos los nombre---*/
+                    let TodosNombres = datos.emailCalificado;/*---traemos todos los nombre --- ultimo push trabajo*/
                     
       
                     if( TodosNombres.indexOf( correo ) >= 0 ){/*--------push casa---------comprobamos si esta el nombre---*/
