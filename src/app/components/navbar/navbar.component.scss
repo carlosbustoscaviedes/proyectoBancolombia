@@ -1,5 +1,4 @@
 
-
 $fuente:'Open Sans', sans-serif;
 
 @mixin circulo{
@@ -15,6 +14,8 @@ $fuente:'Open Sans', sans-serif;
     }
 
 }
+
+
 
 .base_botones_menu{
 
@@ -270,6 +271,8 @@ $fuente:'Open Sans', sans-serif;
     border-top: 0px;
     border-left: 1px solid rgba(0, 144, 255, 0.5098039216);
     border-right: 1px solid rgba(0, 144, 255, 0.5098039216);
+    border-bottom: 1px solid rgba(0, 144, 255, 0.5098039216);
+    
    
 
     .seccion_base{

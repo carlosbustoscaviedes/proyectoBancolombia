@@ -74,7 +74,11 @@ export class EscojerColaboradorComponent implements OnInit {
 
       guardarCorreoSolicitante:any;
       nombreCliente:any
+      
 
+      verPerfilCompleto:boolean = false
+
+      cargarComentarios:any  
 
   constructor(private usarRuta:Router, private recibirParametro: ActivatedRoute, private fb: FormBuilder, private conectarServicios: ServizService ){
 
@@ -378,6 +382,36 @@ export class EscojerColaboradorComponent implements OnInit {
     
    
 
+  }
+
+
+
+
+  verPerfil( position:any){
+    
+    this.verPerfilCompleto = true;
+
+    this.nombrePersona = this.busquedaColaboradores[position].nombre
+    this.domicilios    = this.busquedaColaboradores[position].ciudad
+    this.correo        = this.busquedaColaboradores[position].correo
+
+
+    this.conectarServicios.cargarCalificaciones(this.busquedaColaboradores[position].correo)
+        .subscribe(resp => {
+
+          console.log(resp)
+          this.cargarComentarios = resp;
+        
+        })
+    
+
+    
+
+  }
+
+
+  cerrar(){
+    this.verPerfilCompleto = false;
   }
 
 }

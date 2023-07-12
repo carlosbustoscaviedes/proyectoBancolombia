@@ -225,6 +225,7 @@
   border-top: 0px;
   border-left: 1px solid rgba(0, 144, 255, 0.5098039216);
   border-right: 1px solid rgba(0, 144, 255, 0.5098039216);
+  border-bottom: 1px solid rgba(0, 144, 255, 0.5098039216);
 }
 .base_colaborador .seccion_base {
   width: 100%;
