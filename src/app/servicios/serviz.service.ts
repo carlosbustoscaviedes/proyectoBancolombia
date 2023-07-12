@@ -696,10 +696,10 @@ validarCorreo(){
                     //console.log( datos.id)
                     let todosLosDatos = datos;/*---traemos todos los datos---*/
       
-                    let TodosNombres = datos.emailCalificado;/*---carlos-prueba push------traemos todos los nombre---*/
+                    let TodosNombres = datos.emailCalificado;/*---traemos todos los nombre---*/
                     
       
-                    if( TodosNombres.indexOf( correo ) >= 0 ){/*---comprobamos si esta el nombre---*/
+                    if( TodosNombres.indexOf( correo ) >= 0 ){/*--------push casa---------comprobamos si esta el nombre---*/
       
                         //console.log(todosLosId)/*---solo trae el id de ese---*/
                         GuardarArr.push( todosLosDatos )/*---insertarmos solo el id de la cedula---*/
