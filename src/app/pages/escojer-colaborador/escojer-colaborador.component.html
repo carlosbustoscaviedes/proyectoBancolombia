@@ -58,14 +58,16 @@
 
             <hr class="divisor"/>
 
-            <div class="detalle_colaborador">
+
+
+            <div class="detalle_colaborador" *ngIf="predenPantallaServicio">
                 <h2 class="nombre">{{ nombrePersona }}</h2>
                 <input type="hidden" [(ngModel)]="email" [value]="correo">{{ email }}
 
                 <p class="ubicacion">Domicilios solo para la ciudad de {{ domicilios }}</p>
             </div>
 
-            <div class="contenedor_servicios">
+            <div class="contenedor_servicios" *ngIf="predenPantallaServicio">
                 <form [formGroup]="contratarServicio">
                     <p>Servicios que presta: <span>Valor x hora</span></p>
                     <div class="info">

@@ -48,6 +48,10 @@ export class EscojerColaboradorComponent implements OnInit {
 
 
 
+
+  predenPantallaServicio = false;
+
+
   /*--------valores check------------*/
       Vservicio1:any;   
       Vtarifa1:any = 0;     
@@ -270,6 +274,8 @@ export class EscojerColaboradorComponent implements OnInit {
 
   /*----------ver servicios-------*/
   verServicios(valor:number){
+
+    this.predenPantallaServicio = true;
       
     console.log( this.busquedaColaboradores[valor] );
     
