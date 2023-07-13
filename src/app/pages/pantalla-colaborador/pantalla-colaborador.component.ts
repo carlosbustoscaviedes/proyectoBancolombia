@@ -77,7 +77,8 @@ export class PantallaColaboradorComponent implements OnInit{
     }
 
     this.conectarServicios.consultarAgendados( this.correo )
-        .subscribe( resp => {
+       
+    .subscribe( resp => {
           console.log(resp)
 
           this.resultadosTrabajo = resp;
@@ -121,40 +122,52 @@ export class PantallaColaboradorComponent implements OnInit{
     
 
 
-    Swal.fire(
-      '!Muy Bien!',
-      '!La solicitud ha sido Aceptada!',
-      'success'
-    )
+    Swal.fire({
+      title: '¿Desea aceptar esta solicitud?',
+      text: "Si acepta , se enviara una notificacion al cliente",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Aceptar'
+    }).then((result) => {
 
-
-    /*-
-    console.log("mi correo :" + this.resultadosTrabajo[valor].correoSolictante );
-    console.log("nombre de quien acepta :" + this.resultadosTrabajo[valor].nombrePersona );
-    console.log("correo de quien acepta :" + this.resultadosTrabajo[valor].emailColaborador );
-    -*/
-
-    let aceptado = {
-      
-      nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
-      correoCliente: this.resultadosTrabajo[valor].correoSolictante,
-      nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
-      emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
-      estado: "Aceptado",
-      mensaje: "El servicio fue aceptado por: " + this.resultadosTrabajo[valor].nombrePersona,
-      sugerencia: ""
-
-    }
-
-    console.log(aceptado);
-
-
-    this.conectarServicios.registrarNotificaciones(aceptado)
-        .subscribe( resp => {
-          console.log(resp)
-        })
+      if (result.isConfirmed) {
+        Swal.fire(
+          '¡Muy Bien!',
+          'Se ha aceptado la solicitud de servicio',
+          'success'
+        )
         
-
+         /*-
+          console.log("mi correo :" + this.resultadosTrabajo[valor].correoSolictante );
+          console.log("nombre de quien acepta :" + this.resultadosTrabajo[valor].nombrePersona );
+          console.log("correo de quien acepta :" + this.resultadosTrabajo[valor].emailColaborador );
+          -*/
+      
+          let aceptado = {
+            
+            nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
+            correoCliente: this.resultadosTrabajo[valor].correoSolictante,
+            nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
+            emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
+            estado: "Aceptado",
+            mensaje: "El servicio fue aceptado por: " + this.resultadosTrabajo[valor].nombrePersona,
+            sugerencia: ""
+      
+          }
+      
+          console.log(aceptado);
+      
+      
+          this.conectarServicios.registrarNotificaciones(aceptado)
+              .subscribe( resp => {
+                console.log(resp)
+              })
+            }
+      
+          })
+      
   }
 
 
@@ -162,11 +175,61 @@ export class PantallaColaboradorComponent implements OnInit{
     
     console.log(this)
 
-    Swal.fire(
-      '!Que lastima!',
-      '!La solicitud ha sido Rechazada!',
-      'success'
-    )
+    Swal.fire({
+      title: '¿Desea rechazar esta solicitud?',
+      text: "Si la rechaza, la solicitud sera eliminada ",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Rechazar!'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        Swal.fire(
+          '¡Rechazada!',
+          'la Solicitud ha sido eliminada.',
+          'success'
+        )
+
+
+        let rechazado = {
+      
+          nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
+          correoCliente: this.resultadosTrabajo[valor].correoSolictante,
+          nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
+          emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
+          estado: "Rechazado",
+          mensaje: "El servicio fue rechazado por:  " + this.resultadosTrabajo[valor].nombrePersona,
+          sugerencia: "(le sugerimos buscar una persona que haga el servicio en su sector o que tenga un servicio mas acorde a su necesidad)"
+          
+        }
+    
+        console.log(rechazado);
+      
+        /*-
+        this.conectarServicios.registrarNotificaciones(rechazado)
+              .subscribe( resp => {
+                console.log(resp)
+              })
+              --*/
+  
+
+              /*---borrar registro rechazado-----*/
+              this.conectarServicios.borrarRechazados( this.resultadosTrabajo[valor].id )
+                  .subscribe( (resp:any) => {
+                    console.log( resp );
+
+                     /*---cargar pagina---*/
+                      setTimeout(function(){
+                        window.location.reload()
+                      }, 200);
+                     /*---cargar pagina---*/
+                     
+                  })
+
+      }
+    })
 
     /*
     console.log("mi correo :" + this.resultadosTrabajo[valor].correoSolictante );
@@ -174,26 +237,8 @@ export class PantallaColaboradorComponent implements OnInit{
     console.log("correo de quien rechaza :" + this.resultadosTrabajo[valor].emailColaborador );
     */
 
-    let rechazado = {
-      
-      nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
-      correoCliente: this.resultadosTrabajo[valor].correoSolictante,
-      nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
-      emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
-      estado: "Rechazado",
-      mensaje: "El servicio fue rechazado por:  " + this.resultadosTrabajo[valor].nombrePersona,
-      sugerencia: "(le sugerimos buscar una persona que haga el servicio en su sector o que tenga un servicio mas acorde a su necesidad)"
-      
-    }
+    
 
-    console.log(rechazado);
-  
-    /*-
-    this.conectarServicios.registrarNotificaciones(rechazado)
-          .subscribe( resp => {
-            console.log(resp)
-          })
-          --*/
        
 
   }
@@ -201,38 +246,70 @@ export class PantallaColaboradorComponent implements OnInit{
 
   terminado(valor:any){
     
-    Swal.fire(
-      '!Muy Bien!',
-      '!La solicitud ha sido Terminada!',
-      'success'
-    )
+    Swal.fire({
+      title: '¿El trabajo ha sido terminado?',
+      text: "Si es asi se confirmara al cliente",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ha sido terminado!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          '!Muy bien!',
+          'El cliente será notificado.',
+          'success'
+        )
 
-
-    /*-
-    console.log("mi correo :" + this.resultadosTrabajo[valor].correoSolictante );
-    console.log("nombre de quien acepta :" + this.resultadosTrabajo[valor].nombrePersona );
-    console.log("correo de quien acepta :" + this.resultadosTrabajo[valor].emailColaborador );
-    -*/
-
-    let Terminado = {
+         /*-
+          console.log("mi correo :" + this.resultadosTrabajo[valor].correoSolictante );
+          console.log("nombre de quien acepta :" + this.resultadosTrabajo[valor].nombrePersona );
+          console.log("correo de quien acepta :" + this.resultadosTrabajo[valor].emailColaborador );
+          -*/
       
-      nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
-      correoCliente: this.resultadosTrabajo[valor].correoSolictante,
-      nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
-      emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
-      estado: "Terminado",
-      mensaje: "El servicio fue Terminado por: " + this.resultadosTrabajo[valor].nombrePersona,
-      sugerencia: ""
+          let Terminado = {
+            
+            nombreCliente : this.resultadosTrabajo[valor].nombreCliente,
+            correoCliente: this.resultadosTrabajo[valor].correoSolictante,
+            nombreQuienMandaNotificacion: this.resultadosTrabajo[valor].nombrePersona,
+            emailQuienMandaNotificacion: this.resultadosTrabajo[valor].emailColaborador,
+            estado: "Terminado",
+            mensaje: "El servicio fue Terminado por: " + this.resultadosTrabajo[valor].nombrePersona,
+            sugerencia: ""
+      
+          }
+      
+          console.log(Terminado);
+      
 
-    }
+          /*----notificar terminado----*/
+          this.conectarServicios.registrarTrabajosTerminados(Terminado)
+              .subscribe( resp => {
+                console.log(resp)
+              })
 
-    console.log(Terminado);
 
 
-    this.conectarServicios.registrarTrabajosTerminados(Terminado)
-        .subscribe( resp => {
-          console.log(resp)
-        })
+
+            /*---borrar registro rechazado-----*/
+            this.conectarServicios.borrarRechazados( this.resultadosTrabajo[valor].id )
+            .subscribe( (resp:any) => {
+              console.log( resp );
+
+               /*---cargar pagina---*/
+                setTimeout(function(){
+                  window.location.reload()
+                }, 200);
+               /*---cargar pagina---*/
+               
+            })
+
+      }
+
+    })
+
+   
         
 
   }

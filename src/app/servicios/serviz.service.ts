@@ -463,13 +463,20 @@ validarCorreo(){
         
       return this.usarHttp.get('https://agendamientos-246b0-default-rtdb.firebaseio.com/agenda.json')
               .pipe(
-                map( resp =>{
+                map( (resp:any) =>{
                   
                    /*--creamos un arreglo nuevo--*/
                    const GuardarArr:any = []; 
                     
+                    Object.keys( resp ).forEach( llaves => {
+                        
+                      let userKey = resp[llaves];
+                      userKey.id = llaves
+
+                    })
+                    
                    
-                    Object.values( resp ).forEach( datos => {/*--hacemos un bucle de los datos base de datos--*/
+                    Object.values( resp ).forEach( (datos:any) => {/*--hacemos un bucle de los datos base de datos--*/
                       //console.log( datos.id)
                       let todosLosDatos = datos;/*---traemos todos los datos---*/
         
@@ -620,12 +627,25 @@ validarCorreo(){
       }
 
 
+
     /*-----------BORRAR TERMINADOS-----------*/
     borrarTerminados( llaveID:any ){
       
       return this.usarHttp.delete(`https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados/${ llaveID }.json`)
 
     }
+
+
+    /*--------BORRAR REGISTROS RECHAZADOS----------*/
+    borrarRechazados( Id:any ){
+
+      console.log(Id)
+
+      return this.usarHttp.delete(`https://agendamientos-246b0-default-rtdb.firebaseio.com/agenda/${ Id }.json`);
+
+    }
+
+
 
 
     /*-------REGISTRAR TRABAJOS TERMINADOS-----------*/
