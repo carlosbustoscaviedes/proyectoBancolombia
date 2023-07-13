@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 
 export class NavbarComponent implements OnInit {
 
+  key:any;
 
   menuInicio   = true;
   textregistro = true;
@@ -60,16 +61,12 @@ export class NavbarComponent implements OnInit {
   formularioCalfica:any;
 
   constructor(private usarRuta:Router,  private conectarServicios: ServizService){
-
-   
-
   }
+
 
   ngOnInit(): void {
     
-    
-
-
+  
     /*--token--*/
     if( localStorage.getItem('Token') ){
         
@@ -104,6 +101,7 @@ export class NavbarComponent implements OnInit {
               console.log(resp);
 
               this.mensajeServicioTerminado = resp
+    
      
 
               if(resp.length > 0){
@@ -244,8 +242,8 @@ export class NavbarComponent implements OnInit {
       
     const detallePago = {
       
-      nombrePagador     : this.nombreLogueado,
-      correoPagador     : this.correoCliente,
+      nombrePagador      : this.nombreLogueado,
+      correoPagador      : this.correoCliente,
       emailAlQueLePagan  : this.mensajeServicioTerminado[indice].emailQuienMandaNotificacion,
       estado: "pagado"
 
@@ -255,11 +253,35 @@ export class NavbarComponent implements OnInit {
     this.conectarServicios.registrarPago(detallePago)
           .subscribe( resp => {
 
-            alert("el pago se ha registrado correctamente");
+            //alert("el pago se ha registrado correctamente");
+            
+            this.borrarTerminadosCuandoPaga(   this.mensajeServicioTerminado[indice].id  )
+            
             
           })
 
   }
+
+
+
+  borrarTerminadosCuandoPaga( id:any ){
+      
+    this.conectarServicios.borrarTerminados( id )    
+        .subscribe( resp => {  
+          console.log(resp)
+
+          /*---cargar pagina---*/
+          setTimeout(function(){
+            window.location.reload()
+          }, 200);
+           /*---cargar pagina---*/
+
+        })
+
+  }
+
+
+
 
 
   calificar( Vindice:any ){

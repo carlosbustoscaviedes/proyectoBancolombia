@@ -573,26 +573,43 @@ validarCorreo(){
         
         return this.usarHttp.get("https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados.json")
                 .pipe(
-                  map( resp=>{
+                  map( (resp:any) =>{
                     
                      /*--creamos un arreglo nuevo--*/
-                     const GuardarArr:any = []; 
+                     let GuardarArr:any = []; 
+                    
+                    
+                     /*-----insertar id---------*/
+                     Object.keys( resp ).forEach( llave => {
                       
-                     
-                      Object.values( resp ).forEach( datos => {/*--hacemos un bucle de los datos base de datos--*/
+                      let usuario =  resp[llave]/*---- ingresa a la llave y me trae todos los usuarios ---*/
+                      usuario.id  = llave;/*--- creamos en esos usuarios un id y le colocamos la llave ----*/
+
+                     /*--- console.log(usuario);---aca esta todos los usuario con su id ----*/
+                
+                    })
+
+
+                       /*-----------filtrar por correo----------*/
+                      Object.values( resp ).forEach( (datos:any) => {/*--hacemos un bucle de los datos base de datos--*/
                         //console.log( datos.id)
+
+                      
                         let todosLosDatos = datos;/*---traemos todos los datos---*/
-          
                         let TodosNombres = datos.correoCliente;/*---traemos todos los nombre---*/
                         
-          
+                       
                         if( TodosNombres.indexOf( emailCliente) >= 0 ){/*---comprobamos si esta el nombre---*/
           
                             //console.log(todosLosId)/*---solo trae el id de ese---*/
                             GuardarArr.push( todosLosDatos )/*---insertarmos solo el id de la cedula---*/
                         }
+
+
+                      
           
                       })
+                      
                       
                       return GuardarArr/*---retornamos----*/
                  
@@ -601,6 +618,14 @@ validarCorreo(){
                 )
   
       }
+
+
+    /*-----------BORRAR TERMINADOS-----------*/
+    borrarTerminados( llaveID:any ){
+      
+      return this.usarHttp.delete(`https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados/${ llaveID }.json`)
+
+    }
 
 
     /*-------REGISTRAR TRABAJOS TERMINADOS-----------*/
@@ -655,6 +680,8 @@ validarCorreo(){
               )
 
     }
+
+
 
 
 
@@ -719,4 +746,4 @@ validarCorreo(){
 }
 
 
-/*-----------push FINAL 1-------------*/
+/*-----------push FINA 1-------------*/
