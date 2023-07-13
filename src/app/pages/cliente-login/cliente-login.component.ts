@@ -8,6 +8,8 @@ import { ServizService } from 'src/app/servicios/serviz.service';
 /*--usar ruta--*/
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-cliente-login',
@@ -74,7 +76,11 @@ export class ClienteLoginComponent implements OnInit {
             
             if(err.error.error.message == "EMAIL_NOT_FOUND"){
 
-              alert("el correo no existe")
+              Swal.fire({
+                icon: 'error',
+                title: '¡El correo no existe!'     
+              })
+
             }
             
           }))

@@ -6,6 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 /*-----conectar servicios-----*/
 import { ServizService } from 'src/app/servicios/serviz.service';
 
+import Swal from 'sweetalert2'
+
 
 
 @Component({
@@ -158,7 +160,14 @@ export class RegistroColaboradorComponent implements OnInit {
           .subscribe( resp => {
             console.log( resp );
             
-            alert("se ha resgitrado correctamente");
+
+            Swal.fire(
+              'se ha resgitrado correctamente',
+              
+              'success'
+            )
+
+          
             this.registroColaborador.reset()
             
 

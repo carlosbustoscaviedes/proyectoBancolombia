@@ -9,6 +9,9 @@ import { ServizService } from 'src/app/servicios/serviz.service';
 import { Router } from '@angular/router';
 
 
+import Swal from 'sweetalert2'
+
+
 @Component({
   selector: 'app-login-colaborador',
   templateUrl: './login-colaborador.component.html',
@@ -72,8 +75,13 @@ export class LoginColaboradorComponent {
           
           }, (( err:any) => {
             
-             
-                alert("el correo no es correcto")
+               
+            Swal.fire({
+              icon: 'error',
+              title: 'el correo no es correcto',
+
+            })
+
             
             
           }))

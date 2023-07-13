@@ -11,6 +11,7 @@
 
                 <label>Contraseña</label>
                 <input type="password" class="pass" formControlName="pass"/>
+                <span class="pass_ls">la contraseña debe tener minimo 6 caracteres</span>
                 <small *ngIf="validarPass">Escriba el pssword</small>
 
                 <button (click)="ingresarLogin()">Ingresar</button>

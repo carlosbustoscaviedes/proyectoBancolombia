@@ -5,6 +5,8 @@ import { ServizService } from 'src/app/servicios/serviz.service';
 /*---usar router---*/
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2'
+
 
 
 
@@ -255,7 +257,13 @@ export class NavbarComponent implements OnInit {
 
             //alert("el pago se ha registrado correctamente");
             
-            this.borrarTerminadosCuandoPaga(   this.mensajeServicioTerminado[indice].id  )
+            this.borrarTerminadosCuandoPaga(   this.mensajeServicioTerminado[indice].id  );
+             
+            Swal.fire(
+              '¡Muy Bien!',
+              '!su pago se ha realizado con exito!',
+              'success'
+            )
             
             
           })
@@ -332,7 +340,11 @@ export class NavbarComponent implements OnInit {
     this.conectarServicios.RegistrarCalificacionColaborador( datosCalificacion )
         .subscribe( resp => {
           console.log(resp);
-          alert('se enviado la calificacion correctamente')
+          Swal.fire(
+            '¡La calificacion de ha neviado correctamente!',
+            '¡podras leerla en el perfil d ela personas!',
+            'success'
+          )
         })
     
     

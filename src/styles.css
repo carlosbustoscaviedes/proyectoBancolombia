@@ -6,6 +6,7 @@
 
 span.pass_ls {
   color: #0090ff;
+  display: block;
 }
 
 .contenedor_login {

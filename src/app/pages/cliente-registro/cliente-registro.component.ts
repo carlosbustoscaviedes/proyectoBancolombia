@@ -9,6 +9,9 @@ import { ServizService } from 'src/app/servicios/serviz.service';
 import { Router } from '@angular/router';
 
 
+import Swal from 'sweetalert2'
+
+
 @Component({
   selector: 'app-cliente-registro',
   templateUrl: './cliente-registro.component.html',
@@ -98,7 +101,11 @@ export class ClienteRegistroComponent implements OnInit {
       this.conectarServicios.registrarCliente( this.registroCliente )
           .subscribe( resp => {
   
-            alert("se ha registrado correctamente");
+            Swal.fire(
+              '!Se ha registrado correctamente!',
+              '¡ya puede ingresar por el login!',
+              'success'
+            )
             this.registroCliente.reset();
 
             this.usarRuta.navigate(['home']);
@@ -110,18 +117,33 @@ export class ClienteRegistroComponent implements OnInit {
             console.log(err.error.error.message)
 
             if(err.error.error.message == "EMAIL_EXISTS"){
+              
+              Swal.fire({
+                icon: 'error',
+                title: 'El correo ya existe por favor cambielo',
+              
+              })
 
-              alert("El correo ya existe por favor cambielo");
             }
 
             if(err.error.error.message == "WEAK_PASSWORD"){
 
-              alert("la contraseña debe tener mas de 6 caracteres");
+              Swal.fire({
+                icon: 'error',
+                title: 'la contraseña debe tener mas de 6 caracteres',
+              
+              })
+
             }
 
             if(err.error.error.message == "INVALID_EMAIL"){
-
-              alert("el email no es valido");
+              
+              Swal.fire({
+                icon: 'error',
+                title: 'el email no es valido',
+              
+              })
+             
             }
 
             
