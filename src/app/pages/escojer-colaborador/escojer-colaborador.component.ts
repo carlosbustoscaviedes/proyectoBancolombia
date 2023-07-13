@@ -337,7 +337,7 @@ export class EscojerColaboradorComponent implements OnInit {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Si, agendar servicio!'
           }).then((result) => {
             if (result.isConfirmed) {
       

@@ -429,4 +429,7 @@
     cursor: pointer;
     padding: 13px 10px;
   }
+  .base_calificar {
+    right: 0px;
+  }
 }/*# sourceMappingURL=navbar.component.css.map */

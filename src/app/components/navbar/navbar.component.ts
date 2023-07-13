@@ -221,7 +221,8 @@ export class NavbarComponent implements OnInit {
 
 
   notificaciones(){
-
+  
+    this.baseCalificar = false;
     this.circuloNotificar = false;
     this.baseColaborador = false;
 
