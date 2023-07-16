@@ -69,11 +69,12 @@
 
 
 
-     <!----notificacion de servicios pagados----->
+     <!----notificacion de servicios pagados en colaborador----->
      <div class="base_colaborador" *ngIf="baseColaborador2">
         <div class="seccion_base" *ngFor="let contratado of mensajeDeColaboradorCliente; let i = index">
             <img src="./assets/img/foto_perfil.png"/>
             <p>{{ contratado.nombrePagador }}</p>
+            <a class="boton_calificar" style="background-color: #C1272D;" (click)="eliminar(contratado.id)">Eliminar</a>
             <a class="boton_calificar morado" (click)="calificarDesdeColaborador(i)">Calificar cliente</a>
         </div>
         <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>

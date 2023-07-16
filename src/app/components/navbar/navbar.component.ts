@@ -345,8 +345,6 @@ export class NavbarComponent implements OnInit {
 
 
 
-
-
   calificar( Vindice:any ){
       
     this.baseColaborador = false;
@@ -467,13 +465,11 @@ EnviarCalificacionDesdeColaborador(){
 
 
 
-
-
-
   cerrarR(){
   
     this.registro = false;
   }
+
 
   cerrarL(){
   
@@ -481,5 +477,47 @@ EnviarCalificacionDesdeColaborador(){
   }
 
   
+  eliminar(id:any){
+      
+    console.log(id);
+    
+
+    Swal.fire({
+      title: '¿Desea borrar este registro?',
+      text: "Si confirma el registro se borrara",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Si, Borrarlo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.conectarServicios.borrarEnColaborador(id)
+        .subscribe( resp => {
+          console.log(resp)
+
+
+          Swal.fire(
+            '¡Borrado!',
+            'El registro se ha borrado con exito',
+            'success'
+          )
+
+          setTimeout(function(){
+            window.location.reload()
+          }, 300);
+
+
+        } )
+
+
+       
+        
+      }
+    })
+
+    
+  }
 
 }

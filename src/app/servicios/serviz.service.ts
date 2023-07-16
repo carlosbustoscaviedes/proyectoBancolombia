@@ -637,6 +637,15 @@ export class ServizService{
   }
 
 
+  /*---------BORRAR PAGADOS EN AMBIENTE COLABORADOR---------*/
+  borrarEnColaborador(id:any){
+    
+    return this.usarHttp.delete(`https://notificaciones-d9fbd-default-rtdb.firebaseio.com/pagos/${ id }.json`);
+
+  }
+
+
+
 
 
   
@@ -664,13 +673,24 @@ export class ServizService{
         
       return this.usarHttp.get("https://notificaciones-d9fbd-default-rtdb.firebaseio.com/pagos.json")
               .pipe(
-                map( resp=>{
+                map( (resp:any )=>{
                   
+                
                    /*--creamos un arreglo nuevo--*/
                    const GuardarArr:any = []; 
+
+
+                  /*----traemos la llave-----*/
+                  Object.keys( resp ).forEach( llaves2 => {
+                        
+                      let id = resp[llaves2];
+                      id.id = llaves2;
+                  })
+
+
                     
-                   
-                    Object.values( resp ).forEach( datos => {/*--hacemos un bucle de los datos base de datos--*/
+                   /*-----filtramos datos-----*/
+                    Object.values( resp ).forEach( (datos:any) => {/*--hacemos un bucle de los datos base de datos--*/
                       //console.log( datos.id)
                       let todosLosDatos = datos;/*---traemos todos los datos---*/
         
