@@ -411,8 +411,6 @@ export class EscojerColaboradorComponent implements OnInit {
         })
     
 
-    
-
   }
 
 

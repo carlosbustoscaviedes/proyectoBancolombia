@@ -229,10 +229,6 @@ export class ServizService{
 
 
 
-
-
-
-
     /*---BUSCAR COLABORADORES CON UN SELECT---*/
     buscarColaboradores( nombreBusqueda:string ){
       
@@ -376,7 +372,6 @@ export class ServizService{
     }
 
 
-
     /*---------TOKEN-------------*/
     guardarToken(){
 
@@ -399,11 +394,11 @@ export class ServizService{
       
     }
 
-  validarToken(){
-  
-      return  this.idToken.length > 2
-     
-   }
+    validarToken(){
+    
+        return  this.idToken.length > 2
+       
+     }
    /*---------TOKEN-------------*/
 
 
@@ -436,17 +431,16 @@ export class ServizService{
   }
 
 
-validarCorreo(){
+  validarCorreo(){
 
     return this.idCorreo.length > 2
    
- }
+   }
 /*---validar correo-----*/
 
 
-   
-   
-   destruirTokenYnombre(){
+
+  destruirTokenYnombre(){
    
      localStorage.removeItem('Token');
      localStorage.removeItem('nombre');
@@ -454,12 +448,12 @@ validarCorreo(){
 
  
 
-    }
+  }
 
 
 
-    /*-----------CONSULTAR AGENDADOS----*/
-    consultarAgendados(DatCorreo:any){
+  /*-----------CONSULTAR AGENDADOS----*/
+  consultarAgendados(DatCorreo:any){
         
       return this.usarHttp.get('https://agendamientos-246b0-default-rtdb.firebaseio.com/agenda.json')
               .pipe(
@@ -497,13 +491,11 @@ validarCorreo(){
 
       )
                           
-    }
+  }
 
 
-
-
-    /*------REGISTRAR NOTIFICACIOBNES-------*/
-    registrarNotificaciones( noticia:any ){
+   /*------REGISTRAR NOTIFICACIOBNES-------*/
+  registrarNotificaciones( noticia:any ){
         
       let dataNotificaciones = {
         
@@ -518,11 +510,11 @@ validarCorreo(){
 
       return this.usarHttp.post('https://notificaciones-d9fbd-default-rtdb.firebaseio.com/notificaciones.json',   dataNotificaciones  )
 
-    }
+  }
 
 
-    /*--------------CARGAR NOTIFICACIONES-------------*/
-    cargarNotificaciones(emailCliente:any){
+  /*--------------CARGAR NOTIFICACIONES-------------*/
+  cargarNotificaciones(emailCliente:any){
         
       return this.usarHttp.get("https://notificaciones-d9fbd-default-rtdb.firebaseio.com/notificaciones.json")
               .pipe(
@@ -553,12 +545,12 @@ validarCorreo(){
         
               )
 
-    }
+  }
 
 
 
-    /*-------REGISTRAR TRABAJOS TERMINADOS-----------*/
-    registrarTrabajosTerminados( terminado:any ){
+  /*-------REGISTRAR TRABAJOS TERMINADOS-----------*/
+  registrarTrabajosTerminados( terminado:any ){
         
       let Terminados = {
         
@@ -572,11 +564,11 @@ validarCorreo(){
 
       return this.usarHttp.post('https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados.json',  Terminados  )
 
-    }
+  }
 
 
-       /*--------------CARGAR TERMIMADOS-------------*/
-       cargarTerminados(emailCliente:any){
+  /*--------------CARGAR TERMIMADOS-------------*/
+  cargarTerminados(emailCliente:any){
         
         return this.usarHttp.get("https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados.json")
                 .pipe(
@@ -624,30 +616,30 @@ validarCorreo(){
           
                 )
   
-      }
+  }
 
 
-
-    /*-----------BORRAR TERMINADOS-----------*/
-    borrarTerminados( llaveID:any ){
+  /*-----------BORRAR TERMINADOS-----------*/
+  borrarTerminados( llaveID:any ){
       
       return this.usarHttp.delete(`https://notificaciones-d9fbd-default-rtdb.firebaseio.com/terminados/${ llaveID }.json`)
 
-    }
+  }
 
 
-    /*--------BORRAR REGISTROS RECHAZADOS----------*/
-    borrarRechazados( Id:any ){
+  /*--------BORRAR REGISTROS RECHAZADOS----------*/
+  borrarRechazados( Id:any ){
 
-      console.log(Id)
+   console.log(Id)
 
-      return this.usarHttp.delete(`https://agendamientos-246b0-default-rtdb.firebaseio.com/agenda/${ Id }.json`);
+    return this.usarHttp.delete(`https://agendamientos-246b0-default-rtdb.firebaseio.com/agenda/${ Id }.json`);
 
-    }
-
-
+  }
 
 
+
+
+  
     /*-------REGISTRAR TRABAJOS TERMINADOS-----------*/
     registrarPago( pago:any ){
         

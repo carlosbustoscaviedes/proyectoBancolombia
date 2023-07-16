@@ -11,7 +11,9 @@
 
             <div class="base_trabajos" *ngIf="baseTrabajos">
                 <div class="circulo" *ngIf="circuloTerminados"></div>
-                <p class="text" (click)="contratados()">Servicios Terminados</p>
+                <p class="text" (click)="contratados()"  *ngIf="serviciosTerminados">Servicios terminados</p>
+                <p class="text" (click)="contratados2()" *ngIf="pagosRealizados">pagos realizados</p>
+
             </div>
             <div class="base_notificaciones" *ngIf="baseNotificacions">
                 <div class="circulo" *ngIf="circuloNotificar"></div>
@@ -53,6 +55,7 @@
         <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>
     </div>
 
+    <!----notificacion de servicios terminados----->
     <div class="base_colaborador" *ngIf="baseColaborador" >
         <div class="seccion_base" *ngFor="let contratado of mensajeServicioTerminado; let i = index">
             <img src="./assets/img/foto_perfil.png"/>
@@ -64,10 +67,25 @@
         <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>
     </div>
 
-    <div class="base_calificar" *ngIf="baseCalificar">
-       
-            <h1>{{ nombreCalificado }}</h1>
 
+
+     <!----notificacion de servicios pagados----->
+     <div class="base_colaborador" *ngIf="baseColaborador2">
+        <div class="seccion_base" *ngFor="let contratado of mensajeDeColaboradorCliente; let i = index">
+            <img src="./assets/img/foto_perfil.png"/>
+            <p>{{ contratado.nombrePagador }}</p>
+            <a class="boton_calificar morado" (click)="calificarDesdeColaborador(i)">Calificar cliente</a>
+        </div>
+        <a class="boton_cerrar" (click)="cerrar()">Cerrar</a>
+    </div>
+
+
+
+
+
+    <!--cuadro de calificacion y mensajes--->
+    <div class="base_calificar" *ngIf="baseCalificar">
+            <h1>{{ nombreCalificado }}</h1>
             <input type="radio" name="malo"  value="malo" #val1 (click)="radioBotton(val1.value)"><span>Malo</span><br>
             <input type="radio" name="malo"  value="bueno" #val2 (click)="radioBotton(val2.value)" selected><span>Bueno</span><br>
             <input type="radio" name="malo"  value="excelente" #val3 (click)="radioBotton(val3.value)"><span>Excelente</span><br>
@@ -76,7 +94,9 @@
         
             <textarea type="text" class="textarea" rows="4" cols="50" name="mensaje"  [(ngModel)]="mensajeTXT"></textarea>
 
-            <button (click)="enviarCalificacion()">Enviar Calificación</button>
+            <button (click)="enviarCalificacion()" *ngIf="botonCalifcarCliente">Enviar Calificación 1</button>
+            <button (click)="EnviarCalificacionDesdeColaborador()">Enviar Calificación 2</button>
+
             <button (click)="cerrar()">cerrar</button>
 
         

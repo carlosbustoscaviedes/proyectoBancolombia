@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-
 /*----conectar servicios----*/
 import { ServizService } from 'src/app/servicios/serviz.service';
 
 /*--usar ruta--*/
 import { Router } from '@angular/router';
+
 
 import Swal from 'sweetalert2'
 

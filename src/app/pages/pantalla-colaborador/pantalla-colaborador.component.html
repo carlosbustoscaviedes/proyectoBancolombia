@@ -1,7 +1,22 @@
+<div class="ver_perfil" *ngIf="verPerfilCompleto">
+    <div class="base_ver_perfil">
+        <h1>{{ nombrePersona }}</h1>
+        <p> {{ correoPerfil }}  </p>
+        <p> {{ domicilios }} </p>
+
+        <hr>
+
+        <div class="info_comentario" *ngFor="let comentarios of cargarComentarios">
+            <p class="titulo">{{ comentarios.nombreQuienCalifica }}</p>
+            <p class="comentario">  {{ comentarios.mensaje }}</p>
+            <p class="calificacion">Calificacion: {{  comentarios.calificacion }} </p>
+            <hr>
+        </div>
+        <button class="cerrar" (click)="cerrar()">Cerrar</button>
+    </div>
+</div>
+
 <section>
-
-
-
     <div class="pantalla_de_calificacion" *ngIf="pantallaCalificacion">
         <div class="base_calificacion">
             <form>
@@ -36,8 +51,8 @@
                 <div class="base_detalle">
                     <h2>{{ perfil.nombreCliente }}</h2>
                     <div class="base_info_w">
-                        <button (click)="calificarCliente(i)">Calificar</button>
-                        <button (click)="verDetalle( i )">Ver agendamiento</button>
+                        <button (click)="verPerfil(i)">Perfil</button>
+                        <button (click)="verDetalle( i )">Ver solicitud</button>
                         <button class="verde" (click)="aceptar( i )" >Aceptar</button>
                         <button class="rojo"   (click)="rechazar( i )" >Rechazar</button>
                         <button class="naranja"  (click)="terminado( i )">trabajo Terminado</button>

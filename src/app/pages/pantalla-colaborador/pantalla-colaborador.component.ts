@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 })
 export class PantallaColaboradorComponent implements OnInit{
     
+  verPerfilCompleto:boolean = false
 
   correo:any;
   
@@ -54,6 +55,12 @@ export class PantallaColaboradorComponent implements OnInit{
   
 
      
+      nombrePersona:any;
+      correoPerfil:any; 
+      domicilios:any;    
+      
+    
+      cargarComentarios:any = [];
       
   constructor( private conectarServicios:ServizService ){
     
@@ -363,6 +370,48 @@ export class PantallaColaboradorComponent implements OnInit{
 
   cerrar(){
     this.pantallaCalificacion = false;
+    this.verPerfilCompleto = false;
   }
+
+
+
+
+
+
+  verPerfil( position:any){
+    
+    this.verPerfilCompleto = true;
+
+
+    this.nombrePersona = this.resultadosTrabajo[position].nombreCliente,
+    this.correoPerfil = this.resultadosTrabajo[position].correoSolictante,
+    this.domicilios = this.resultadosTrabajo[position].direccion 
+  
+    
+    this.conectarServicios.cargarCalificaciones( this.resultadosTrabajo[position].correoSolictante )
+    .subscribe(resp => {
+
+      console.log(resp)
+      this.cargarComentarios = resp;
+    
+    })
+
+
+    /*--
+    this.nombrePersona = this.busquedaColaboradores[position].nombre
+    this.domicilios    = this.busquedaColaboradores[position].ciudad
+    this.correo        = this.busquedaColaboradores[position].correo
+
+
+   
+    
+
+  }
+
+  ---*/
+  }
+
+
+
 
 }

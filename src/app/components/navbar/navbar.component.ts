@@ -18,6 +18,8 @@ import Swal from 'sweetalert2'
 
 
 export class NavbarComponent implements OnInit {
+    
+  textoNotificaciones:string = ""
 
   key:any;
 
@@ -34,7 +36,11 @@ export class NavbarComponent implements OnInit {
 
   baseMensajes = false;
   baseColaborador = false;
+  baseColaborador2 = false;
   baseCalificar = false;
+
+  serviciosTerminados = true;
+  pagosRealizados     = false;
   
   nombreLogueado:any =  "" 
   
@@ -62,6 +68,19 @@ export class NavbarComponent implements OnInit {
 
   formularioCalfica:any;
 
+
+
+  /*-----------calificacion desde Colaborador---*/
+  nombrePagador:any        
+  correoPagador:any        
+  emailAlQueLePagan:any    
+  nombreQuienLePagan:any
+
+
+  botonCalifcarCliente:boolean     = false;
+  botonCalifcarColaborador:boolean = false;
+
+
   constructor(private usarRuta:Router,  private conectarServicios: ServizService){
   }
 
@@ -79,8 +98,11 @@ export class NavbarComponent implements OnInit {
       this.baseNotificacions = true;
 
       this.menuInicio   = false;
-     
 
+      this.serviciosTerminados = true;
+      this.pagosRealizados = false
+
+      
       /*------cargar Notificaciones------*/
       this.correoCliente = localStorage.getItem('correo');
       this.conectarServicios.cargarNotificaciones( this.correoCliente )
@@ -104,7 +126,6 @@ export class NavbarComponent implements OnInit {
 
               this.mensajeServicioTerminado = resp
     
-     
 
               if(resp.length > 0){
                 
@@ -122,11 +143,16 @@ export class NavbarComponent implements OnInit {
     /*--correo--*/
     if( localStorage.getItem('correo') ){
       
-
+      this.baseTrabajos = true;
       this.textregistro = false;
       this.baseUsuario = true;
       this.menuInicio   = false;
       this.baseNotificacions = true;
+
+      this.serviciosTerminados = false;
+      this.pagosRealizados = true;
+
+
 
 
       /*-----cargar notificacion pagos---*/
@@ -134,7 +160,13 @@ export class NavbarComponent implements OnInit {
           .subscribe( resp => {
             this.circuloNotificar = true;
             console.log(resp);
+            
             this.mensajeDeColaboradorCliente = resp;
+
+            if( resp.length > 0 ){
+              this.circuloTerminados = true;
+            }
+
           })
      
     }
@@ -220,11 +252,34 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
+  contratados2(){
+    
+    this.circuloTerminados = false
+    this.baseMensajes = false;
+
+
+    if(this.baseColaborador2){
+
+      this.baseColaborador2 = false;
+
+    }else{
+
+      this.baseColaborador2 = true;
+    
+    }
+
+  }
+
+
   notificaciones(){
   
     this.baseCalificar = false;
     this.circuloNotificar = false;
     this.baseColaborador = false;
+
+ 
+    this.baseColaborador2 = false;
 
     
 
@@ -303,12 +358,38 @@ export class NavbarComponent implements OnInit {
     this.correoQuienCalifica =  this.mensajeServicioTerminado[Vindice].correoCliente, 
     this.nombreQuienCalifica =  this.mensajeServicioTerminado[Vindice].nombreCliente
 
+    this.botonCalifcarCliente     = true;
+    this.botonCalifcarColaborador = false;
+
   }
+
+
+  calificarDesdeColaborador( Vindice:any ){
+      
+    this.baseColaborador = false;
+    this.baseCalificar = true;
+    
+ 
+    this.nombrePagador        =  this.mensajeDeColaboradorCliente[Vindice].nombrePagador,  
+    this.correoPagador        =  this.mensajeDeColaboradorCliente[Vindice].correoPagador, 
+    this.emailAlQueLePagan    =  this.mensajeDeColaboradorCliente[Vindice].emailAlQueLePagan,
+    this.nombreQuienLePagan   =  this.nombreLogueado
+
+    this.botonCalifcarCliente = false;
+    this.botonCalifcarColaborador = true;
+
+    this.baseColaborador2 = false;
+
+  }
+
+
 
   cerrar(){
     this.baseCalificar = false;
     this.baseColaborador = false;
     this.baseMensajes = false;
+
+    this.baseColaborador2 = false;
   }
 
   
@@ -318,6 +399,8 @@ export class NavbarComponent implements OnInit {
     this.calificacion = valor;
 
   }
+
+
 
   /*------------------------*/
   enviarCalificacion(){
@@ -333,7 +416,6 @@ export class NavbarComponent implements OnInit {
 
     }
     console.log(datosCalificacion);
-  
     this.baseCalificar = false;
 
     /*---------conectar servicio-----------*/
@@ -342,13 +424,50 @@ export class NavbarComponent implements OnInit {
           console.log(resp);
           Swal.fire(
             '¡La calificacion de ha neviado correctamente!',
-            '¡podras leerla en el perfil d ela personas!',
+            '¡podras leerla en el perfil de la personas!',
             'success'
           )
         })
     
     
   }
+
+
+
+/*------------------------*/
+EnviarCalificacionDesdeColaborador(){
+
+  let datosCalificacion2 = {
+
+    nombreCalif :      this.nombrePagador,
+    emailCalif  :      this.correoPagador,
+    correoQuienCal :   this.emailAlQueLePagan,
+    nombreQuienCalif : this.nombreQuienLePagan,
+    calificacion :     this.calificacion,
+    mensaje:           this.mensajeTXT
+
+  }
+
+  console.log(datosCalificacion2);
+  this.baseCalificar = false;
+
+
+  /*---------conectar servicio-----------*/
+    this.conectarServicios.RegistrarCalificacionColaborador( datosCalificacion2 )
+        .subscribe( resp => {
+          console.log(resp);
+          Swal.fire(
+            '¡La calificacion de ha neviado correctamente!',
+            '¡podras leerla en el perfil de la personas!',
+            'success'
+          )
+        })
+
+}
+
+
+
+
 
 
   cerrarR(){

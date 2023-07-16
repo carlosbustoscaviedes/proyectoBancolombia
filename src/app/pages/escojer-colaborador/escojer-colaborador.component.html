@@ -7,7 +7,7 @@
         <hr>
 
         <div class="info_comentario" *ngFor="let comentarios of cargarComentarios">
-            <p class="titulo">{{ comentarios.nombreCalificado }}</p>
+            <p class="titulo">{{ comentarios.nombreQuienCalifica }}</p>
             <p class="comentario"> {{ comentarios.mensaje }}</p>
             <p class="calificacion">calificacion : {{ comentarios.calificacion }}</p>
             <hr>
