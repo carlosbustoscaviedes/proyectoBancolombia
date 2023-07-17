@@ -39,8 +39,8 @@ export class NavbarComponent implements OnInit {
   baseColaborador2 = false;
   baseCalificar = false;
 
-  serviciosTerminados = true;
-  pagosRealizados     = false;
+  serviciosTerminados:any;
+  pagosRealizados:any;
   
   nombreLogueado:any =  "" 
   
@@ -104,7 +104,7 @@ export class NavbarComponent implements OnInit {
 
       
       /*------cargar Notificaciones------*/
-      this.correoCliente = localStorage.getItem('correo');
+      this.correoCliente = localStorage.getItem('email');
       this.conectarServicios.cargarNotificaciones( this.correoCliente )
               .subscribe( resp => {
                 console.log(resp);

@@ -280,7 +280,7 @@ export class ServizService{
         map( (resp:any) => {
             
           localStorage.setItem('nombre', resp.displayName);
-          localStorage.setItem('correo', resp.email);
+          localStorage.setItem('email', resp.email);
 
 
           this.idToken = resp.idToken;
